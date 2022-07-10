@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2022-05-28T21:04:33 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="57mm_qrprint" pageWidth="161" pageHeight="842" columnWidth="151" leftMargin="5" rightMargin="5" topMargin="5" bottomMargin="5" isIgnorePagination="true" uuid="adda01a2-3496-4b51-82d7-1bf4739d7a46">
+    <property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="metalab\DataAdapter.xml"/>
+    <property name="com.jaspersoft.studio.unit." value="pixel"/>
+    <property name="com.jaspersoft.studio.unit.topMargin" value="mm"/>
+    <property name="com.jaspersoft.studio.unit.bottomMargin" value="mm"/>
+    <property name="com.jaspersoft.studio.unit.leftMargin" value="mm"/>
+    <property name="com.jaspersoft.studio.unit.rightMargin" value="mm"/>
+    <property name="com.jaspersoft.studio.unit.pageHeight" value="mm"/>
+    <property name="com.jaspersoft.studio.unit.pageWidth" value="mm"/>
+    <property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+    <property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+    <parameter name="tokenId" class="java.lang.String"/>
+    <parameter name="companyName" class="java.lang.String"/>
+    <parameter name="address" class="java.lang.String"/>
+    <parameter name="phoneNumber" class="java.lang.String"/>
+    <parameter name="poweredBy" class="java.lang.String"/>
+    <parameter name="img" class="java.lang.String"/>
+    <queryString language="SQL">
+        <![CDATA[select t.id, t.create_date, c.shop_name from token t join customer c on t.customer_id = c.id where t.id = $P{tokenId} and t.status = 1]]>
+    </queryString>
+    <field name="tokenId" class="java.lang.Long"/>
+    <field name="createDate" class="java.sql.Timestamp"/>
+    <field name="shopName" class="java.lang.String"/>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="63" splitType="Stretch">
+            <textField>
+                <reportElement x="0" y="0" width="150" height="20" uuid="a22fb24f-0f90-4fc1-aa6c-79b2b7921e7b"/>
+                <textElement textAlignment="Center" verticalAlignment="Top">
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{companyName}]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true">
+                <reportElement positionType="Float" x="0" y="22" width="150" height="20" uuid="b93da309-c09a-45b7-b8e2-e052aa90219d"/>
+                <textElement textAlignment="Center">
+                    <font size="11"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{address}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement positionType="Float" x="0" y="43" width="150" height="14" uuid="adb32ef1-b79c-466f-91ff-5b28bc477711"/>
+                <textElement textAlignment="Center"/>
+                <textFieldExpression><![CDATA[$P{phoneNumber}]]></textFieldExpression>
+            </textField>
+            <line>
+                <reportElement positionType="Float" x="7" y="61" width="137" height="1" uuid="94d2f83f-2be7-4272-a96b-35933da64c55"/>
+                <graphicElement>
+                    <pen lineStyle="Dotted"/>
+                </graphicElement>
+            </line>
+        </band>
+    </title>
+    <columnHeader>
+        <band height="55" splitType="Stretch">
+            <staticText>
+                <reportElement x="7" y="5" width="43" height="12" uuid="d7e7f2a3-7372-451a-9925-254e4777f66e">
+                    <property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+                </reportElement>
+                <textElement verticalAlignment="Middle">
+                    <font size="9" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Toke ID :]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="7" y="19" width="62" height="12" uuid="038a23cc-02c7-448d-b6c0-f971d48aaad1">
+                    <property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+                </reportElement>
+                <textElement verticalAlignment="Middle">
+                    <font size="9" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Create Date :]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="65" y="19" width="60" height="12" uuid="fdd3b695-30c3-49af-9be8-415841539fd8"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="9" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{createDate}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="47" y="5" width="71" height="12" uuid="eacedd8a-d86b-4c6a-a07f-2c4b75be00bc"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="9" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{tokenId}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="7" y="34" width="62" height="12" uuid="290189fc-bb23-41ad-a26d-b4d3e568ef4d">
+                    <property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+                </reportElement>
+                <textElement verticalAlignment="Middle">
+                    <font size="9" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Shop Name :]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="65" y="34" width="60" height="12" uuid="0aff289e-a5cf-4d25-8ee0-ce71c81cc424"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="9" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{shopName}]]></textFieldExpression>
+            </textField>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="114" splitType="Stretch">
+            <image hAlign="Center" vAlign="Middle">
+                <reportElement positionType="Float" x="7" y="2" width="133" height="110" uuid="c4c714bb-f54a-4f5c-8b38-7e4dbbfd3386"/>
+                <imageExpression><![CDATA[$P{img}.toString()]]></imageExpression>
+            </image>
+        </band>
+    </detail>
+    <pageFooter>
+        <band height="29" splitType="Stretch">
+            <staticText>
+                <reportElement x="25" y="3" width="100" height="11" uuid="67edb6c2-1468-4343-bb6a-fc24aeb21b48">
+                    <property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+                </reportElement>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <text><![CDATA[Thank You!]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="25" y="18" width="100" height="11" uuid="d6bbcab2-49a6-4855-a234-5c0be267ac06">
+                    <property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+                </reportElement>
+                <textElement textAlignment="Center">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{poweredBy}]]></textFieldExpression>
+            </textField>
+        </band>
+    </pageFooter>
+</jasperReport>
